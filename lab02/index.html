@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="pt" ng-app="toDoList">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <title>To Do List</title>
+
+    <link rel="stylesheet" href="lib/CSS/bootstrap.css">
+    <link rel="stylesheet" href="lib/CSS/style.css">
+
+    <script src="lib/JavaScript/angular.js"></script>
+    <script src="lib/JavaScript/bootstrap.js"></script>
+    <script src="lib/JavaScript/jquery.js"></script>
+    <script src="lib/JavaScript/app.js"></script>
+
+    <nav id="menu">
+        <ul type="disc">
+            <li ><a href="index.html">Home</a> </li>
+            <li><a href="https://github.com/MattheusB">GitHub</a> </li>
+
+        </ul>
+    </nav>
+
+
+</head>
+
+<body class="background" ng-controller="toDoListController">
+    <div>
+        <h1 class="title">{{app}}</h1>
+    </div>
+
+    <div class="jumbotron">
+
+        <table class="table">
+
+            <tr class="bar-title">
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Done</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr ng-class="{'taskDone' : task.done, 'taskDeleted' : task.deleted}" ng-repeat="task in tasks">
+                <td>{{task.name}}</td>
+                <td>{{task.date}}</td>
+                <td>{{task.time}}</td>
+
+                <td><input type="checkbox" ng-model="task.done"/></td>
+
+                <td><input type="checkbox" ng-model="task.deleted"/></td>
+
+
+            </tr>
+
+
+        </table>
+
+        <hr/>
+
+        <input class="form-control" type="text" ng-model="task.name" placeholder="Name"/>
+        <input class="form-control" type="text" ng-model="task.date" placeholder="Date"/>
+        <input class="form-control" type="text" ng-model="task.time" placeholder="Time"/>
+
+        <button class="btn btn-danger btn-block" ng-click="clearTasks()" ng-show="tasks.length > 0">Clear All
+Tasks</button>
+            <button class="btn btn-primary btn-block" ng-click="addTask(task)" ng-disabled="!task.name || !task.date || !task.time">Add Task</button>
+            <button class="btn btn-danger btn-block" ng-click="removeTask(tasks)" ng-show="isTaskSelected(tasks)">Delete Task</button>
+
+
+        <div class="text-xs-center" id="example-caption-6">Tasks Progress&hellip; {{calculatePercentage(tasks) + "%"}}</div>
+            <progress class="progress progress-striped progress-animated" value={{calculatePercentage(tasks)}}  max="100">{{calculatePercentage(tasks) + "%"}}<</progress>
+
+        </div>
+
+
+        <footer>
+                <h5 class="credits">Copyright © Mattheus Brito Rodrigues</h5>
+        </footer>
+
+
+    </div>
+
+
+
+</body>
+
+
+
+</html>

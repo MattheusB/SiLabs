@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="appTask">
+<head>
+<meta charset="utf-8"></meta>
+
+<title>To Do List</title>
+
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/frameworks/bootstrap.js"></script>
+<script src="./js/jquerry.js"></script>
+<script src="./js/controllers/TaskListController.js"></script>
+
+<link rel="stylesheet" href="./css/frameworks/bootstrap.css"></link>
+<link rel="stylesheet" href="./css/style.css"></link>
+
+
+<nav id="menu">
+	<ul type="disc" class="menu">
+		<li><a href="/home">Home</a></li>
+		<li><a href="#!">What you want?</a>
+			<ul class="sub-menu">
+				<li><a href="/addTaskList">Create Task List</a></li>
+				<li><a href="/addTask">Create Task</a></li>
+				<li><a href="/addSubTask">Create SubTask</a></li>
+			</ul></li>
+		<li><a href="/contact">Contact</a></li>
+
+	</ul>
+</nav>
+
+
+</head>
+<body class="background" ng-controller="taskListController">
+
+	<div>
+		<h1 class="title">{{app}}</h1>
+	</div>
+
+
+</body>
+
+</html>
